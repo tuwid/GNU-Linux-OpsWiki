@@ -1,0 +1,13 @@
+Basic service management with `systemd` (part 2)
+
+`Upstart` will be deprecated in favor of `Systemd`. With `Systemd` to manage the services we can do the following:
+
+`systemctl enable SERVICE.service` - Turns the service on, on the next reboot or on the next start event. It persists after reboot.
+
+`systemctl disable SERVICE.service` - Turns the service off on the next reboot or on the next stop event. It persists after reboot.
+
+`systemctl is-enabled SERVICE.service` - Check if a service is currently configured to start or not on the next reboot.
+
+`systemctl is-active SERVICE.service` - Check if a service is currently active.
+
+`systemctl show SERVICE.service` - Show all the information about the service.

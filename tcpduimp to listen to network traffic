@@ -1,0 +1,8 @@
+tcpdump is a useful utility to print out descriptions of contents of packets flowing through network interface card which match a given boolean expression.
+
+sudo tcpdump -i wlan0 -v 'tcp port 80'
+
+The -i specifies the interface to listen on. The -v option specifies verbosity of packet information such as time to live, identification, total length and options in ip packet. The expression specifies a pcap-filter used to decide which packets to print. Here we listen for tcp traffic with either source or destination port set to 80.
+
+See man pcap-filter for details on filters.
+

@@ -1,0 +1,22 @@
+Use the built-in Node debugger by running your app in debug mode:
+
+node debug [your app]
+
+Place a debugger statement on the line of interest, for example:
+
+for(var i=0; i<3; i++){
+  debugger;
+  console.log("hello " + i);
+}
+console.log("end");
+
+Running this in the debugger will break at the relevant line.
+
+Step through your code using these debug commands:
+
+    continue – cont, c
+    step – next, n
+    step in – step, s
+    step out – out, o
+
+

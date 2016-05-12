@@ -1,0 +1,26 @@
+Timeouts can be applied at both suite level and test level.
+
+Suite-level timeouts can be applied to entire test suites. All nested suites and test cases will inherit this.
+
+In comparison, test-level timeouts are applied to individual test cases.
+
+Invoking this.timeout(0) disables timeouts altogether. Mocha uses a default timeout of 2000ms.
+
+describe('suite level timeouts', () => {
+  this.timeout(250);
+
+  it('timeout < 250ms', (done) => {
+    setTimeout(done, 125);
+  });
+})
+
+Test-specific timeouts can be applied like in the following example:
+
+describe('test level timeouts', () => {
+  it('timeout < 1000ms', (done) => {
+    this.timeout(1000);
+    setTimeout(done, 500);
+  });
+});
+
+

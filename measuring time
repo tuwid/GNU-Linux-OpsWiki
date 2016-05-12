@@ -1,0 +1,15 @@
+Many applications require a very precise time measurement.
+
+currentTimeMillis() returns current time in milliseconds since Epoch Time, in Long form.
+
+long startTime = System.currentTimeMillis();
+long estimatedTime 
+  = System.currentTimeMillis() - startTime;
+
+nanoTime() returns the current value of the most precise available system timer, in nanoseconds, in long form. nanoTime() is meant for measuring relative time interval instead of providing absolute timing.
+
+long startTime = System.nanoTime();
+long estimatedTime 
+  = System.nanoTime() - startTime;
+
+

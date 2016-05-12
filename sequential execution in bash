@@ -1,0 +1,6 @@
+The ; operator makes it possible to run several commands all at once, the execution of each command occurring sequentially:
+
+apt-get update; apt-get upgrade; mkdir test
+
+The command above gets application updates, installs them and lastly creates a new directory called test.
+

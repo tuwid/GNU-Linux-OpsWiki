@@ -1,0 +1,17 @@
+Generators are functions that can be paused and resumed at a yield point.
+
+Generators can play three roles:
+
+Iterators: generators can return a value via next() at each yield point to produce a sequence of values (an iterable).
+
+Observers: generators can pause at a yield point until a new value is pushed to them via next().
+
+Coroutines: the dual data producing and consuming properties of generators can be combined into a multitasking routine.
+
+There are various ways of creating a generator, for example by a generator function declaration:
+
+function* genFunc() { ··· }
+let genObj = genFunc();
+
+Note the * that indicates genFunc() is a generator.
+

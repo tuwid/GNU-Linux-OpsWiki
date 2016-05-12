@@ -1,0 +1,11 @@
+Since React 0.14 it is possible to define components as a simple function:
+
+let comp = ({stuff}) => <h1>{stuff}</h1>;
+
+Yet, a type for the arguments can still be specified using propTypes:
+
+comp.propTypes = {
+  stuff: React.PropTypes.string
+};
+
+

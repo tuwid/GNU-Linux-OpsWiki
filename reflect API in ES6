@@ -1,0 +1,31 @@
+ES6 has a global object called Reflect that has methods to implement all interceptable operations of the Javascript meta object protocol.
+
+Reflect is very useful for implementing proxies as the names of the Reflect methods are the same as those of the proxy handler methods. This helps with forwarding operations from the proxy handler to the proxy target.
+
+Reflect can also be useful for:
+
+Indicating success
+
+Some Reflect methods return booleans indicating whether the operation succeeded.
+
+Reflect.defineProperty
+  (target, propertyKey, propDesc)
+// Like Object.defineProperty() 
+// but returns a boolean.
+
+Implementing operator functionality
+
+Some Reflect methods implement functionality that is otherwise only available via operators:
+
+Reflect.get
+    (target, propertyKey, receiver?)
+
+Shorten apply
+
+Produce a cleaner and shorter version of .apply.
+
+Function.prototype.apply.call
+    (func, thisArg, args) // ES5
+Reflect.apply(func, thisArg, args) // ES6
+
+

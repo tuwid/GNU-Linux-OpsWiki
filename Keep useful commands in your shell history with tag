@@ -1,0 +1,13 @@
+Tag commands for future reference:
+
+$ some_command -x ~/ # useful
+
+Then it is possible to search your bash history using Ctrl+R:
+
+(reverse-i-search)`#useful': 
+   some_command -x ~/ # useful
+
+Because # useful is just a comment in bash you are not limited to this word. Therefore, creative use of tags can save you time.
+
+Ensure ~/.bash_history is backed up to save the tag collection.
+

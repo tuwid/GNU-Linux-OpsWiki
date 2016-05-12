@@ -1,0 +1,19 @@
+Virtual hosting represents the method of hosting multiple domain names (with separate handling for each one) on a single server.
+
+The Express 4.0 middleware module called vhost deals with this, handing off requests to handle when the incoming host matches hostname. Before using it, the module must be installed:
+
+$ npm install vhost
+
+And imported:
+
+var vhost = require('vhost`);
+
+The constructor has two parameters: hostname and handle. The former can be a string or a RegExp object.
+
+After the host is matched and the request is sent to the handler, the req.vhost property will be populated with an object that will have numeric properties corresponding to every wildcard and hostname.
+
+var app = connect();
+app.use(vhost('ex.example.com', exApp));
+//vhost routing to main app for ex
+
+

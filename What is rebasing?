@@ -1,0 +1,18 @@
+The git rebase command is a way to combine branches.
+
+In a basic rebase, you 'replay' the changes made on one branch onto the other.
+
+For example, to rebase the changes committed to scrollFix onto master:
+
+$ git checkout scrollFix
+$ git rebase master
+
+This works by 'rewinding' scrollFix to the commit shared by the two branches and saving the changes in a temporary file. The scrollFix reference is then set to the same as master and the changes are applied.
+
+You can then get master to point at the final commit:
+
+$ git checkout master
+$ git merge scrollFix
+
+If you look at the history, it will seem like all the changes happened in series when they were actually made in parallel.
+

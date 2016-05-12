@@ -1,0 +1,11 @@
+If you mistakenly stage a file and want to 'undo' this operation, you can use git reset.
+
+For example:
+
+$ git add *
+# mistakenly staged all files
+$ git reset HEAD README.txt
+# unstaged README.txt
+
+You can use git status for prompts on unstaging.
+

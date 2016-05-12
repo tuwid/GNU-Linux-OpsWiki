@@ -1,0 +1,26 @@
+Viewing
+
+To list the shortnames of all the remote repositories that you have configured:
+
+$ git remote
+origin
+
+If you use the flag -v you can see the URLs associated with each shortname:
+
+$ git remote -v
+origin https://git.enki.com (fetch)
+origin https://git.enki.com (push)
+
+Editing
+
+To change the name of a remote repository from ol to nu:
+
+git remote rename ol nu
+
+Deleting
+
+To remove a remote repository:
+
+git remote rm nu
+
+

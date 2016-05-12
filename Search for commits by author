@@ -1,0 +1,13 @@
+You can search for commits that were made by a particular author by using the --author option.
+
+This produces a filtered log output containing only the commits made by that author.
+
+For example:
+
+$ git log --pretty=format:"%h: %s" 
+  --author=enki 
+bc15f3c: Fix scrolling bug
+b423c5d: New game format
+f75e351: Change insight layout
+
+

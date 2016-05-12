@@ -1,0 +1,18 @@
+# this is the global screenrc file. Handle with care.
+
+termcapinfo xterm* G0:is=\E[?4l\E>:ti@:te@
+termcapinfo linux me=\E[m:AX
+#termcapinfo xterm* ti@:te@
+startup_message off
+vbell off
+autodetach on
+altscreen on
+shelltitle "$ |bash"
+#defscrollback 10000
+defutf8 on
+nonblock on
+hardstatus alwayslastline
+hardstatus string '%{gk}[ %{G}%H %{g}][%= %{wk}%?%-Lw%?%{=b kR}(%{W}%n*%f %t%?(%u)%?%{=b kR})%{= kw}%?%+Lw%?%?%= %{g}][%{Y}%l%{g}]%{=b C}[ %m/%d %c ]%{W}'
+
+
+

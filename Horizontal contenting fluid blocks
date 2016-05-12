@@ -1,0 +1,10 @@
+To horizontally center blocks of unknown width:
+
+#horizontal-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+The left property relates to the size of the parent so the left of child will be in the middle. The transform property relates to the child size. Hence it will be centered.
+

@@ -1,0 +1,16 @@
+You can merge branches in git using git merge.
+
+For example, to merge the fix branch into master:
+
+$ git checkout master
+$ git merge fix
+
+In most cases this results in a three-way merge, which is where git makes a new commit based on the most recent commits of both fix and master, as well as their most recent shared commit (i.e. common ancestor).
+
+Autocommit can be avoided by using the --no-commit option, which is useful when you want to make additional tweaks to the merge result.
+
+You can then delete the fix branch:
+
+$ git branch -d fix
+
+

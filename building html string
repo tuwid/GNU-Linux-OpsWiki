@@ -1,0 +1,19 @@
+On modern browsers, building HTML strings with .join() is less efficient than the naive method.
+
+Adding the values to an array and then joining them at the end:
+
+var html = [];
+for(var i=0; i<100; i++) {
+  html.push('<p>', i, '</p>');
+}
+html = html.join(‘’);
+
+Runs slower than building HTML strings using +=:
+
+var html = '';
+for(var i=0; i<100; i++) {
+  html += '<p>' + i + '</p>'
+}
+
+This has been true since Firefox 1.0.
+

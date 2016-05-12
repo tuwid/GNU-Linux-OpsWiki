@@ -1,0 +1,25 @@
+The Permission API is a standard way to check the permission status of an API.
+
+You can check the status of a permission using permissions.query(). The status is either granted, denied or prompt (if you need to request the permission from the user).
+
+For example:
+
+// Check for Geolocation API permissions. 
+// Pass permission's name into method
+// as 'permissionDescriptor' object. 
+navigator.permissions
+               .query({name:'geolocation'})
+  // The Promise resolves to
+  // `permissionStatus' object 
+  .then(function(permissionStatus) { 
+    // print state of geolocation permission
+    console.log('geo permission 
+        state is ', permissionStatus.state);
+  });
+
+You can also create an event handler for permissionStatus.onchange.
+
+Requesting permission from the user still depends on the specific API.
+
+Currently this API is only available in Chrome.
+

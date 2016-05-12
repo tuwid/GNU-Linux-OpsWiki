@@ -1,0 +1,11 @@
+If you contribute to an open source project, e.g. by submitting a pull request with a bug fix, it should be presented as one unit of code.
+
+You should squash your commits together. For example, if you have three commits:
+
+git reset HEAD~3
+git add .
+git commit -am "Fix bug #14"
+git push --force
+
+By doing this you can get rid of "fix typo" commits and have all your changes grouped in just one commit. This will keep the maintainer happy!
+

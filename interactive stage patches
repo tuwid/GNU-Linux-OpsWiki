@@ -1,0 +1,14 @@
+To partially stage a file:
+
+$ git add -p
+# or
+$ git add --patch
+
+Alternatively, when performing an interactive stage, you can type 5 (patch) in the interactive shell.
+
+Once you have selected a file, git will display hunks of the file diff and ask:
+
+Stage this hunk [y,n,a,d,/,j,J,g,e,?]? >
+
+You can then choose yes y, no n and other options such as skipping a hunk.
+

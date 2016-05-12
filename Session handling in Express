@@ -1,0 +1,24 @@
+Prior to handling sessions in Express 4.0, the express-session middleware must be installed:
+
+$ npm install express-session
+
+Session can be accessed through the request object:
+
+var sess;
+app.get('/', function(req,res) {
+  sess = req.session;
+  // more code here
+} // sess initialized as homepage is visited
+
+Creating session variables:
+
+sess.id = "100";
+sess.myVar = "myValue";
+
+Destroying sessions:
+
+req.session.destroy(function(err){
+});
+
+Keep in mind that the express-session module is very big, providing numerous methods and properties of the session object.
+

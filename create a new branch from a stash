@@ -1,0 +1,6 @@
+If you want to test out a stash before you apply it to its original branch, you can use the branch option:
+
+$ git stash branch testing
+
+This will create a branch testing and checkout the commit you were on when you made the stash. It will then apply the changes and delete the stash if it was successful.
+

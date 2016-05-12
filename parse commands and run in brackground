@@ -1,0 +1,14 @@
+CTRL+Z  # pauses an application
+
+fg # returns you to the application
+
+Let's say you've opened a file in nano (terminal text editor) like this :
+
+sudo nano abc.txt
+
+Midway through typing text into the file you realise that you need to quickly type another command into the terminal but there's no way around it because you opened nano in foreground mode.
+
+The obvious solution would be to save the file, exit nano, run the command you want to run and then re-open nano.
+
+However, all you really have to do is press CTRL+Z which will force the foreground application to pause and return you to the terminal. You can then run any command you'd like and once you're finished enter fg, press return and you'll come back to the paused session.
+

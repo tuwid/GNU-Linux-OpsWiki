@@ -1,0 +1,10 @@
+If you don't want to keep the changes that you've made to a file, you can use git checkout to revert to the previous version of the file.
+
+For example:
+
+$ git checkout -- MYFILE.md
+
+It is not recommended that you use this command unless you are 100% certain. The deleted changes can't be recovered.
+
+You can use stashing or branching to keep a copy of the changes to a file in case you need to access them at a later date.
+

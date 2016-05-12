@@ -1,0 +1,10 @@
+There is a shorthand to checkout the previous branch:
+
+$ git checkout -
+
+This is the same as:
+
+$ git checkout @{-1}
+
+The shorthand is useful if you want to switch back and forth between a master branch and a feature branch.
+

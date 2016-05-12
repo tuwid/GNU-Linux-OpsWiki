@@ -1,0 +1,11 @@
+Cherry-picking refers to when you merge a commit from one branch to another.
+
+For example:
+
+$ git checkout master
+$ git cherry-pick a456bd7
+# merge commit a456bd7 
+# with branch master
+
+This is most useful when you are unable to merge the two branches. For example, you might want to fix a security issue present in both branches.
+

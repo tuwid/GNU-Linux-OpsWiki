@@ -1,0 +1,12 @@
+If you want to run a command at some point in the future, use at:
+
+at 10:25 PM sat
+at> cowsay ‘hello’
+at> CTRL + D
+
+The above command will run the program cowsay at 10:25 PM on Saturday evening.
+
+Once the at> prompt shows up enter the command you'd like to run at the specified time.
+
+CTRL+D returns you to the cursor.
+

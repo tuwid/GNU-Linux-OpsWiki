@@ -1,0 +1,34 @@
+Streams can be used in Node in order to make I/O operations more efficient, by processing data sequentially.
+
+Streams are EventEmitters with special methods , unix pipes that let you read from a source and pipe to another.
+
+In a simple Node HTTP server response and request are specialized streams (writeable and readable).
+
+Create a readable stream:
+
+readable = fs.createReadStream('file.txt');
+
+Read from a stream with a data event callback:
+
+readStream.on('data', function(chunk) {
+    data+=chunk;
+});
+
+End event to notify the end of a stream:
+
+readStream.on('end', function() { } );
+
+Create a writeable stream:
+
+writeable = fs.createWriteStream('file.txt')
+
+Write to a writeable Stream and end it:
+
+writeable.write('data');
+writeable.end('Ended.');
+
+Pair input and output with pipe():
+
+readable.pipe(writable);
+
+

@@ -1,0 +1,20 @@
+The umask acts as a set of permissions that applications cannot set on files.
+
+It is a file mode creation mask for processes and cannot be set for a directory itself. Most applications would not create files with execute permissions set, so they would have a default of 666, which is then modified by the umask.
+
+To make files only read/write/executable by the owner, use a umask like 077.
+
+In contrast, a umask of 000 will make newly created directories with 777 permission. This is highly insecure and a umask of 000 is advised against.
+
+The default umask on Ubuntu is 022, which means that newly created files have a permission of 755:
+
+user@pc:~$ touch new-file-name
+user@pc:~$ ls -dl new-file-name
+-rw-r--r-- 1 user user 0 new-file-name
+
+To change the umask of current session to 077, run:
+
+umask 077
+
+To apply this on all the users of the system you should add this on the /etc/profile.
+

@@ -1,0 +1,13 @@
+If you commit to the current branch when instead you wanted to commit to a new branch, you can easily correct your mistake.
+
+For example if you made your commit to master instead of test:
+
+$ git branch test
+# create new branch from
+# current HEAD
+$ git reset --hard HEAD~ 
+# reset master to before last commit
+$ git checkout test
+# continue on new branch
+
+

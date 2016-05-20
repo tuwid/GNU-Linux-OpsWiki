@@ -1,0 +1,24 @@
+Using :after and :before pseudo elements can be used to add more borders to an element. These must be either set bigger larger and behind the element or smaller and inside (but parent element must be positioned on top).
+
+Keep in mind that the element with multiple borders needs its own border and a non-static position.
+
+.elem {
+  position: relative;
+  border: 5px solid #f00;
+}
+
+Add the second border:
+
+.elem:after {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  right: -15px;
+  bottom: -15px;
+  background: red;
+  z-index: -1;
+}
+
+z-index: -1 will keep the border behind the content preserving,for example, selectability of text and clickability of links.
+

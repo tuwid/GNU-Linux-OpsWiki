@@ -1,0 +1,9 @@
+Use the below to print the current call stack for debugging purposes:
+
+function stack() { 
+  try { throw Error() } 
+  catch(e) { return e.stack }
+}
+console.log(stack())
+
+Learn more 

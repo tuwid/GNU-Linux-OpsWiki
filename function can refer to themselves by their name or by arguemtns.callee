@@ -1,0 +1,19 @@
+Functions can either refer to themselves recursively by the function name, or by using arguments.callee to refer to the function body.
+
+This allows for recursive anonymous functions:
+
+function factorial(val) {
+  if (val <= 0) {
+    return 1;
+  } else {
+    // Anonymous function invocation
+    return val *
+      arguments.callee(val - 1);
+
+    // Function invocation via name
+    //return val * factorial(val - 1);
+  }
+}
+
+Note however that the 5th edition of ECMAScript forbids the use of arguments.callee in strict mode. It can therefore be considered a legacy feature.
+

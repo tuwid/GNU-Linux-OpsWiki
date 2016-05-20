@@ -1,0 +1,9 @@
+typeof returns "object" for all objects, and nothing more specific.
+
+Examples:
+
+typeof null // "object"
+typeof new Date() // "object"
+typeof new Array() // "object"
+
+

@@ -1,0 +1,16 @@
+A stack trace of all threads can be useful in diagnosing a number of issues such as deadlocks or hangs.
+
+jstack is a utility that returns a complete dump of the various threads running in an app, which you can then be used to pinpoint the problem from the command line.
+
+jstack works the same as pressing Ctrl-Break within the console window in which a Java program is running, or calling Thread.getAllStackTraces() or Thread.dumpStack() on each of the Thread objects in the VM.
+
+Basic syntax:
+
+$ jstack PID
+
+Print a detailed dump:
+
+$ jstack -l PID
+
+A jstack call also dumps information about non-Java threads running within the VM, which aren't always available as Thread objects.
+

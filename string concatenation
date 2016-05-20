@@ -1,0 +1,24 @@
+There are many ways to concatenate string data types.
+
+The most user-friendly approach is using the + operator :
+
+var str = "Hello";
+str += " World!";
+// a+=b is equal to a=a+b
+
+An other way to concatenate multiple strings is by joinining the elements of an array:
+
+var str = ["Hello"];
+str.push(" World!");
+str.join("");
+
+You can also use concat function:
+
+var str1 = "Hello ";
+var str2 = "world!";
+var res = str1.concat(str2);
+
+JavaScript deals with the problem of immutable strings internally when using the + operator, making it performance-friendly in most cases.
+
+Using the array method proves also effective when using IE 6/7.
+

@@ -1,0 +1,21 @@
+JavaScript provides a way to handle different click events such as right clicks and double clicks.
+
+Keep in mind that click events will also trigger some mouse events.
+
+Click events supported in JavaScript:
+
+    click : mousedown and mouseup events are also triggered before
+    contextmenu : it's preceded by mousedown and succeded by mouseup
+    dbclick : triggers two complete clicks before the double.
+
+The order is consistent across all browsers except IE<9 which skips second click on dbclick.
+
+Add a listener to these events:
+
+myVar.addEventListener('click', 
+myClickFunction, false);
+myVar.addEventListener('dbclick', 
+myDoubleClickFunction, false);
+
+To handle both single clicks and double clicks simultaneously a timer (around 100 ms) should be implemented. If after a click, another one is registered within this timer, the double click function should be called. Otherwise, the single click one should be.
+

@@ -1,0 +1,15 @@
+Here’s a basic .gitignore:
+
+# Can ignore specific files
+.DS_Store
+
+# Use wildcards as well
+*~
+*.swp
+
+# Can also ignore all directories
+#and files in a directory.
+tmp/**/*
+
+This file should be placed in the root of your repository.
+

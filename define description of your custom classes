@@ -1,0 +1,6 @@
+- (NSString *)description {
+    return self.name;
+}
+
+Now when you log them with NSLog they’ll return a sensible string, instead of nil.
+

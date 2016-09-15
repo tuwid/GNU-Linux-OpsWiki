@@ -1,0 +1,1 @@
+git add `git status | grep modified | grep md | gawk '{print $2}'` && git commit -a -S -s && git-com-vrfy && git logline -1 --stat && git push origin master && git for-each-ref --sort=committerdate --format='%(refname:short) * %(authorname) * %(committerdate:relative)' refs/remotes/ | column -t -s '*'. 

@@ -1,0 +1,34 @@
+
+
+MongoDB Replica Set Member State is “OTHER”
+
+You can use following command to init:
+
+rs.initiate({
+      _id: "rs0",
+      version: 1,
+      members: [
+         { _id: 0, host : "localhost:27017" }
+      ]
+   }
+)
+If you have already initiated, you may get the error msg like me:
+
+singleNodeRepl:OTHER> rs.initiate({ _id: "rs0", members: [ { _id: 0, host : "localhost:27017" } ] } )
+{
+    "info" : "try querying local.system.replset to see current configuration",
+    "ok" : 0,
+    "errmsg" : "already initialized",
+    "code" : 23,
+    "codeName" : "AlreadyInitialized"
+}
+The solution is to reconf the mongo:
+
+singleNodeRepl:OTHER> rsconf = rs.conf()
+singleNodeRepl:OTHER> rsconf.members = [{_id: 0, host: "localhost:27017"}]
+[ { "_id" : 0, "host" : "localhost:27017" } ]
+singleNodeRepl:OTHER> rs.reconfig(rsconf, {force: true})
+{ "ok" : 1 }
+singleNodeRepl:OTHER>
+singleNodeRepl:SECONDARY>
+singleNodeRepl:PRIMARY>

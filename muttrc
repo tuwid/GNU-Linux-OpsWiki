@@ -1,0 +1,285 @@
+# Some minimal Mutt settings, Gentoo-style. Since mutt was installed
+# with USE=mbox, this file doesn't have any changes from the default
+# mutt settings, making it very minimal indeed...
+#
+# Please don't add settings to this file to change other user
+# preferences (such as colors), since those can be hard for a user to
+# undo if their preference doesn't match yours! For example, it is
+# *impossible* currently in mutt to remove color settings from objects
+# other than the index.
+#
+source "gpg2 -dq $HOME/.mail.cred.gpg |"
+set imap_user = "Your_email_id@gmail.com"
+set imap_pass =$my_pass 
+set pager_context=1
+set pager_index_lines=6 #show a mini-index in pager
+set menu_scroll
+set pgp_verify_sig=yes #dont show pgp in pager
+#set status_on_top #put status line at top
+set sort=threads #sort by message threads in index
+set status_format=" %r %b %f %n Del %d Msgs %m %l %> (%P)"
+set pager_format="%-10.10i %[!%a %b %d %R]"
+set date_format="!%H:%M %a %d %b %Y"
+#set index_format="%D  %Z  %[] %-15.15F  %s"
+set index_format="%D  %Z  %[]  %-30.30F (%-4.4c) %s"
+set folder_format="%2C %t %8s %d %N %f"
+set text_flowed=yes
+set mbox_type=Maildir
+set charset=UTF-8
+set maildir_header_cache_verify=no
+#set arrow_cursor = yes 
+set alias_file=~/.mutt/aliases 
+source $alias_file
+ignore *
+unignore ^from: ^date: ^subject: ^to: ^cc:
+#
+# #set sendmail="/usr/bin/nbsmtp -d isp.net -h smtp.isp.net -f yourname@isp.net"
+#
+set from="Your_email_id@gmail.com" #set to your from address
+set realname="Your Real Name"
+#
+# set record="$home/sent" #sent mail is saved here
+set delete=yes #delete without prompting
+set include=yes #quote msg in reply
+set fast_reply=yes #no prompting on reply
+set beep=no #no noise
+set markers=no #no + on wrapped lines
+set confirmappend=no #no prompt for save to =keep
+set to_chars=" +TCFL" #no L for mail_list
+set send_charset="us-ascii:utf-8"
+#
+set folder="imaps://imap.gmail.com:993"
+set spoolfile="+INBOX"
+set record ="+[Gmail]/Sent Mail"
+set header_cache=~/.mutt/cache/headers
+set message_cachedir=~/.mutt/cache/bodies
+#gpg
+set pgp_sign_as="Your PGP/GPG key here"
+set crypt_use_gpgme=yes
+set crypt_replysign=yes
+set crypt_replysignencrypted=yes
+set pgp_timeout=3600
+
+#This is to send mail in the background, but please set the log file for that
+
+#sendmail_wait = -1
+
+
+# GnuPG configuration
+#set pgp_decode_command="gpg2 --status-fd=2 %?p?--passphrase-fd 0? --no-verbose --quiet --batch --output - %f"
+#set pgp_verify_command="gpg2 --status-fd=2 --no-verbose --quiet --batch --output - --verify %s %f"
+#set pgp_decrypt_command="gpg2 --status-fd=2 %?p?--passphrase-fd 0? --no-verbose --quiet --batch --output - %f"
+#set pgp_sign_command="gpg2 --no-verbose --batch --quiet --output - %?p?--passphrase-fd 0? --armor --detach-sign --textmode %?a?-u %a? %f"
+#set pgp_clearsign_command="gpg2 --no-verbose --batch --quiet --output - %?p?--passphrase-fd 0? --armor --textmode --clearsign %?a?-u %a? %f"
+#set pgp_encrypt_only_command="/usr/lib/mutt/pgpewrap gpg2 --batch --quiet --no-verbose --output - --encrypt --textmode --armor --always-trust -- -r %r -- %f"
+#set pgp_encrypt_sign_command="/usr/lib/mutt/pgpewrap gpg2 %?p?--passphrase-fd 0? --batch --quiet --no-verbose --textmode --output - --encrypt --sign %?a?-u %a? --armor --always-trust -- -r %r -- %f"
+#set pgp_import_command="gpg2 --no-verbose --import %f"
+#set pgp_export_command="gpg2 --no-verbose --export --armor %r"
+#set pgp_verify_key_command="gpg2 --verbose --batch --fingerprint --check-sigs %r"
+#set pgp_list_pubring_command="gpg2 --no-verbose --batch --quiet --with-colons --list-keys %r" 
+#set pgp_list_secring_command="gpg2 --no-verbose --batch --quiet --with-colons --list-secret-keys %r" 
+#set pgp_good_sign="^\\[GNUPG:\\] GOODSIG"
+
+ mailboxes =Blackberry_Travel
+ mailboxes =inbox/LWN 
+ mailboxes =sent
+ mailboxes =Documents
+ mailboxes =Geek_Stuff
+ mailboxes =linux-kernel
+ mailboxes =unix_tips
+ mailboxes ="[Gmail]/Sent Mail"
+ mailboxes =inbox/Google_Alert
+
+auto_view text/html
+set mailcap_path=~/.mutt/mailcap
+set smtp_url="smtp://Your_user_name@smtp.gmail.com:587/"
+set smtp_pass=$my_pass
+#save-hook .*=keep #default mbox to (s)ave mail is =keep
+# subscribe gentoo-user gentoo-dev #subscribed to these lists
+#
+# bind pager h display-toggle-weed #toggle headers with h key
+#
+# # simulate the old url menu
+macro index \cb |urlview\n 'call urlview to extract URLs out of a message'
+macro pager \cb |urlview\n 'call urlview to extract URLs out of a message'
+#
+# #run fetchmail by hitting key of G
+macro index G "!fetchmail -a -m 'procmail -d %T'\r"
+macro pager G "!fetchmail -a -m 'procmail -d %T'\r"
+#
+# #use to edit .muttrc and then source it...no restart necessary
+# macro generic ,sm ":source $HOME/.muttrc\r"
+# macro generic \cj "!rxvt -bg wheat -e joe $HOME/.muttrc\r"
+#
+# # default list of header fields to weed out when displaying mail
+# #ignore them all and then unignore what you want to see
+# ignore *
+unignore Date To From: Subject X-Mailer Organization User-Agent
+hdr_order Date From To Subject X-Mailer User-Agent Organization
+#
+# ##your Mutt has to have some colors
+# ##these are for four levels of quoted text
+# ##they override the system settings in /etc/mutt/Muttrc
+#
+# #color quoted green default
+color quoted1 magenta blue
+# #color quoted2 yellow default
+# #color quoted3 red default
+# #color signature cyan cyan
+#
+#How to color individual mail id on index page
+color index yellow default '~f gregkh@linuxfoundation.org'
+
+color index brightcyan default '~f torvalds@linux-foundation.org'
+
+color index green default '~f akpm@linux-foundation.org'
+
+color index red default '~f konstantin@linuxfoundation.org'
+
+color index cyan default '~f viro@zeniv.linux.org.uk'
+
+color index brightred default '~f sfr@canb.auug.org.au'
+
+color index brightyellow default '~f davem@davemloft.net'
+
+color index brightgreen default '~f paulmck@linux.ibm.com'
+
+color index brightgreen default '~f paulmck@kernel.org'
+
+color index brightwhite default '~f corbet@lwn.net'
+
+color index brightblue default '~f peterz@infradead.org'
+
+color index brightmagenta default '~f mingo@kernel.org' 
+
+color index magenta default '~f tytso@mit.edu'
+
+color index blue default '~f hpa@zytor.com'
+
+
+# #this color setup is copied from /etc/mutt/Muttrc.color
+# #comment it out if you want the default colors in /etc/mutt/Muttrc
+# # Je vois la vie en rose :-)
+color hdrdefault brightcyan blue
+color header brightwhite blue "^from:"
+color header brightwhite blue "^subject:"
+#color index red default ~P
+#
+color quoted brightgreen blue
+color signature brightwhite blue
+#
+color indicator blue green
+#
+color error red black
+mono error bold
+color status brightgreen black 
+mono status bold
+color tree yellow blue
+#
+color tilde brightmagenta blue
+color body brightwhite blue "[-a-z_0-9.]+@[-a-z_0-9.]+"
+mono body bold "[-a-z_0-9.]+@[-a-z_0-9.]+"
+color body brightyellow black "^Good signature"
+mono body bold "^Good signature"
+color body brightwhite red "^Bad signature from.*"
+mono body bold "^Bad signature from.*"
+color normal white blue
+color message green black
+color attachment brightgreen blue
+#
+
+# # End of file...but it can go on and on and on....:)
+#
+
+set sidebar_visible
+set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
+set mail_check_stats
+#set sidebar_component_depth = 1
+
+# Move the highlight to the previous mailbox
+bind index,pager \Cp sidebar-prev
+# Move the highlight to the next mailbox
+bind index,pager \Cn sidebar-next
+# Open the highlighted mailbox
+bind index,pager \Co sidebar-open
+# Move the highlight to the previous page
+# This is useful if you have a LOT of mailboxes.
+bind index,pager <F3> sidebar-page-up
+# Move the highlight to the next page
+# This is useful if you have a LOT of mailboxes.
+bind index,pager <F4> sidebar-page-down
+# Move the highlight to the previous mailbox containing new, or flagged,
+# mail.
+bind index,pager <F5> sidebar-prev-new
+# Move the highlight to the next mailbox containing new, or flagged, mail.
+bind index,pager <F6> sidebar-next-new
+# Toggle the visibility of the Sidebar.
+bind index,pager B sidebar-toggle-visible
+
+# Note: All color operations are of the form:
+#       color OBJECT FOREGROUND BACKGROUND
+# Color of the current, open, mailbox
+# Note: This is a general NeoMutt option which colors all selected items.
+color indicator cyan black
+# Color of the highlighted, but not open, mailbox.
+#color sidebar_highlight black color8
+# Color of the divider separating the Sidebar from NeoMutt panels
+#color sidebar_divider color8 black
+# Color to give mailboxes containing flagged mail
+#color sidebar_flagged red black
+# Color to give mailboxes containing new mail
+color sidebar_new green black
+# Color to give mailboxes containing no new/flagged mail, etc.
+#color sidebar_ordinary color245 default
+#
+#
+#Open attachment with program
+#
+macro attach O \
+"\
+<enter-command>unset wait_key<enter>\
+<shell-escape>rm -f /tmp/mutt-attach<enter>\
+<save-entry><kill-line>/tmp/mutt-attach<enter>\
+<shell-escape> /tmp/mutt-attach &^A\
+"
+
+set editor="vim -c 'set spell spelllang=en'" 
+
+
+folder-hook linux-kernel             'push <delete-pattern>~r>1w!~F<enter><sync>'
+
+folder-hook inbox/Google_Alert       'push <delete-pattern>~r>1w!~F<enter><sync>' 
+
+auto_view text/* application/* image/* audio/*
+
+lists linux-kernel@vger.kernel.org
+subscribe [0-9]+.*@vger.kernel.org
+
+#Status Bar
+set status_chars  = " *%A"
+set status_format = "[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?"
+
+
+#macro index <F6> \
+#"<enter-command>set my_old_pipe_decode=\$pipe_decode my_old_wait_key=\$wait_key nopipe_decode nowait_key<enter>\
+#<shell-escape>notmuch-mutt -r --prompt search<enter>\
+#<change-folder-readonly>`echo ${XDG_CACHE_HOME:-$HOME/.cache}/notmuch/mutt/results`<enter>\
+#<enter-command>set pipe_decode=\$my_old_pipe_decode wait_key=\$my_old_wait_key<enter>" \
+#"notmuch: search mail"
+
+#macro index <F9> \
+#"<enter-command>set my_old_pipe_decode=\$pipe_decode my_old_wait_key=\$wait_key nopipe_decode nowait_key<enter>\
+#<pipe-message>notmuch-mutt -r thread<enter>\
+#<change-folder-readonly>`echo ${XDG_CACHE_HOME:-$HOME/.cache}/notmuch/mutt/results`<enter>\
+#<enter-command>set pipe_decode=\$my_old_pipe_decode wait_key=\$my_old_wait_key<enter>" \
+#"notmuch: reconstruct thread"
+
+#macro index <F10> \
+#"<enter-command>set my_old_pipe_decode=\$pipe_decode my_old_wait_key=\$wait_key nopipe_decode nowait_key<enter>\
+#<pipe-message>notmuch-mutt tag -- -inbox<enter>\
+#<enter-command>set pipe_decode=\$my_old_pipe_decode wait_key=\$my_old_wait_key<enter>" \
+#"notmuch: remove message from inbox"
+
+
+#macro index / "<enter-command>unset wait_key<enter><shell-escape>~/bin/mutt-notmuch-py<enter><change-folder-readonly>~/.cache/mutt_results<enter>" \
+#            "search mail (using notmuch)"

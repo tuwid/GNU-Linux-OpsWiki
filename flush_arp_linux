@@ -1,0 +1,8 @@
+
+
+Clear ARP cache and validate:
+Run command: ip -s -s neigh flush all
+Run command: arp -n
+Compare the last command results to the first (should have less rows)
+
+

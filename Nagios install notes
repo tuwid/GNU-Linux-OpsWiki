@@ -64,3 +64,59 @@ apt-get install mailutils postfix
 # check here : /usr/local/nagios/etc/objects/commands.cfg
 
 /etc/init.d/nagios restart
+
+
+# cert stuff 
+
+apt-get update
+apt-get upgrade
+apt-get install openssl
+mkdir /etc/ssl/localcerts
+
+openssl req -new -x509 -days 365 -nodes -out /etc/ssl/localcerts/apache.pem -keyout /etc/ssl/localcerts/apache.key
+chmod 600 /etc/ssl/localcerts/apache*
+
+
+
+
+# additional ubuntu notes 
+
+/etc/init.d/apparmor stop
+update-rc.d -f apparmor remove
+aptitude remove apparmor apparmor-utils
+
+mkdir /downloads
+
+#Zgjidh Smarthost kur te instalosh Postfixin
+aptitude -y install apache2 libapache2-mod-php5 build-essential libgd2-xpm-dev postfix
+
+aptitude update
+aptitude safe-upgrade
+
+useradd -m -s /bin/bash nagios
+passwd nagios
+usermod -G nagios nagios
+groupadd nagcmd
+usermod -a -G nagcmd nagios
+
+
+cd /downloads
+wget http://prdownloads.sourceforge.net/nagios/nagios-3.2.3.tar.gz
+wget http://prdownloads.sourceforge.net/nagiosplug/nagios-plugins-1.4.15.tar.gz
+tar -zxf /downloads/nagios-3.2.3.tar.gz
+tar -zxf /downloads/nagios-plugins-1.4.15.tar.gz
+
+cd /downloads/nagios-3.2.3
+./configure --with-command-group=nagcmd
+make all
+make install
+make install-init
+make install-config
+make install-commandmode
+make install-webconf
+
+# Fut pacvordin :
+htpasswd -c /usr/local/nagios/etc/htpasswd.users nagiosadmin
+/etc/init.d/apache2 restart
+
+

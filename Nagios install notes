@@ -1,0 +1,66 @@
+seems one needs to disable APP ARMOR for this to work :facepalm: nejse...
+#/etc/init.d/apparmor stop
+#update-rc.d -f apparmor remove
+#aptitude remove apparmor apparmor-utils
+------------------------------------------------------
+
+apt-get update
+apt-get upgrade
+
+
+apt-get install build-essential php5-gd wget libgd2-xpm libgd2-xpm-dev
+
+
+adduser --system --no-create-home --disabled-login --group nagios
+groupadd nagcmd
+usermod -G nagcmd nagios
+usermod -a -G nagcmd www-data
+
+
+cd /opt/
+wget http://prdownloads.sourceforge.net/sourceforge/nagios/nagios-3.2.3.tar.gz
+wget http://prdownloads.sourceforge.net/sourceforge/nagiosplug/nagios-plugins-1.4.15.tar.gz
+
+
+tar -xzvf /opt/nagios-3.2.3.tar.gz
+cd /opt/nagios-3.2.3
+./configure --with-command-group=nagcmd
+
+make all
+make install
+make install-init
+make install-config
+make install-commandmode
+
+#edit email at /usr/local/nagios/etc/objects/contacts.cfg 
+
+cd /opt/nagios-3.2.3
+make install-webconf
+
+htpasswd -c /usr/local/nagios/etc/htpasswd.users nagiosadmin
+
+/etc/init.d/apache2 reload
+
+cd /opt/
+tar xzf /opt/nagios-plugins-1.4.15.tar.gz
+cd /opt/nagios-plugins-1.4.15
+./configure --with-nagios-user=nagios --with-nagios-group=nagios
+make
+make install
+
+
+chmod +x /etc/init.d/nagios
+/usr/sbin/update-rc.d -f nagios defaults
+
+#check errors :
+/usr/local/nagios/bin/nagios -v /usr/local/nagios/etc/nagios.cfg
+
+/etc/init.d/nagios start
+
+
+#for emails  : 
+apt-get install mailutils postfix
+
+# check here : /usr/local/nagios/etc/objects/commands.cfg
+
+/etc/init.d/nagios restart
